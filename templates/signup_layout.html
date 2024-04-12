@@ -1,0 +1,57 @@
+{% extends "access_layout.html" %}
+
+{% block head %}
+    <link href="../static/signup_style.css" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}
+    Sign Up
+{% endblock title %}
+
+{% block content %}
+
+    <p class="par_signup">SIGN UP</p>
+    <div class="div_signup"></div>
+
+    <form method="POST">
+        <input class="txt_fname" name="fname" type="text" placeholder="FIRST NAME" autocomplete="off">
+        <input class="txt_lname" name="lname" type="text" placeholder="LAST NAME" autocomplete="off">
+        <input class="txt_email" name="email" type="text" placeholder="EMAIL" autocomplete="off">
+        <input class="txt_uname" name="uname" type="text" placeholder="USERNAME" autocomplete="off">
+        <input class="txt_pword" name="pword" type="password" id="txt_pass" placeholder="PASSWORD" autocomplete="off">
+        <img src="../static/eyeslash.png" id="btn_pass"> 
+        <button class="btn_signup" type="submit">Sign Up</button>
+    </form>
+
+    <a class="link_login" href="{{url_for('login')}}">Already have an account? Log In</a>
+    <a class="link_reset" href="{{url_for('reset')}}">Forgot password?</a>
+    
+    <script>
+
+        function removeDivFlash(){
+            var div = document.getElementById('div_flash');
+            var btn = document.getElementById('btn_flash');
+
+            div.remove();
+            btn.remove();
+        }
+
+        var btn_pass = document.querySelector("#btn_pass");
+        var txt_pass = document.querySelector("#txt_pass");
+
+        btn_pass.addEventListener("click", function(){
+            type = txt_pass.getAttribute("type") == "password" ? "text" : "password";
+            txt_pass.setAttribute("type", type);
+
+            link = btn_pass.getAttribute("src");
+            if(link == "../static/eyeslash.png"){
+                btn_pass.setAttribute("src", "../static/eye.png");
+            }
+            else{
+                btn_pass.setAttribute("src", "../static/eyeslash.png");
+            }
+        });
+
+    </script>
+
+{% endblock content %}

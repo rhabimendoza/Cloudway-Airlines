@@ -1,0 +1,103 @@
+{% extends "main_layout.html" %}
+
+{% block head %}
+    <link href="../static/moneytickets_style.css" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}
+    Money | Tickets
+{% endblock title %}
+
+{% block content %}
+
+    <div class="div_mon">
+        <p class="par_mon">Total Money</p>
+        <p class="par_bal">Php {{money}}</p>
+    </div>
+
+    <form method="POST">
+        <div class="div_add">
+            <p class="par_add">Add Money</p>
+            <p class="par_amou">Enter amount:</p>
+            <input class="box_amou" type="text" name="box_amou" autocomplete="off">
+            <p class="par_pass">Enter password:</p>
+            <input class="box_pass" type="password" name="box_pass" id="txt_pass">
+            <img src="../static/eyeslash.png" id="btn_pass">
+            <button class="btn_add">Add Money</button>
+        </div>
+    </form>
+
+    <input class="tbl_inp" type="text" placeholder="Search here" onkeyup="searchTable(this.value, 'tbl_data')">
+
+    <div class="div_data">
+        <table class="table" id="tbl_data">
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Destination</th>
+                <th>Seat</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+            {% for t in tickets | reverse %}
+            <tr>
+                <td>{{t[0]}}</td>
+                <td>{{t[1]}}</td>
+                <td>{{t[2]}}</td>
+                <td>{{t[3]}}</td>
+                <td>{{t[4]}}</td>
+                <td>{{t[5]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+	</div>	
+
+    <script>
+
+        function searchTable(input, table){
+            var table = document.getElementById(table);
+            var filter = input.toUpperCase();
+            var row;
+
+            for(ctr = 0, row; row = table.rows[ctr]; ctr++){
+                
+                if(ctr != 0){
+                    text = row.innerHTML;
+
+                    if(text.toUpperCase().indexOf(filter) > -1){
+                        row.style.display = "";
+                    }
+                    else{
+                        row.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function removeDivFlash(){
+            var div = document.getElementById('div_flash');
+            var btn = document.getElementById('btn_flash');
+
+            div.remove();
+            btn.remove();
+        }
+
+        var btn_pass = document.querySelector("#btn_pass");
+        var txt_pass = document.querySelector("#txt_pass");
+
+        btn_pass.addEventListener("click", function(){
+            type = txt_pass.getAttribute("type") == "password" ? "text" : "password";
+            txt_pass.setAttribute("type", type);
+
+            link = btn_pass.getAttribute("src");
+            if(link == "../static/eyeslash.png"){
+                btn_pass.setAttribute("src", "../static/eye.png");
+            }
+            else{
+                btn_pass.setAttribute("src", "../static/eyeslash.png");
+            }
+        });
+    
+    </script>
+
+{% endblock content %}

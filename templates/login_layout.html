@@ -1,0 +1,54 @@
+{% extends "access_layout.html" %}
+
+{% block head %}
+    <link href="../static/login_style.css" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}
+    Log In
+{% endblock title %}
+
+{% block content %}
+
+    <p class="par_login">LOG IN</p>
+    <div class="div_login"></div>
+    
+    <form method="POST">
+        <input class="txt_uname" name="uname" type="text" placeholder="USERNAME" autocomplete="off">
+        <input class="txt_pword" name="pword" id="txt_pass" type="password" placeholder="PASSWORD" autocomplete="off">
+        <img src="../static/eyeslash.png" id="btn_pass"> 
+        <button class="btn_login" type="submit">Log In</button>
+    </form>
+
+    <a class="link_signup" href="{{url_for('signup')}}">Don't have an account? Sign up</a>
+    <a class="link_reset" href="{{url_for('reset')}}">Forgot password?</a>
+    
+    <script>
+
+        function removeDivFlash(){
+            var div = document.getElementById('div_flash');
+            var btn = document.getElementById('btn_flash');
+
+            div.remove();
+            btn.remove();
+        }
+
+        var btn_pass = document.querySelector("#btn_pass");
+        var txt_pass = document.querySelector("#txt_pass");
+
+        btn_pass.addEventListener("click", function(){
+            type = txt_pass.getAttribute("type") == "password" ? "text" : "password";
+            txt_pass.setAttribute("type", type);
+
+            link = btn_pass.getAttribute("src");
+            if(link == "../static/eyeslash.png"){
+                btn_pass.setAttribute("src", "../static/eye.png");
+            }
+            else{
+                btn_pass.setAttribute("src", "../static/eyeslash.png");
+            }
+        });
+
+    </script>
+    
+{% endblock content %}

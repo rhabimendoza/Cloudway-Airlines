@@ -1,0 +1,58 @@
+{% extends "admin_layout.html" %}
+{% block head %}
+
+<link href = "../static/admin_add_style.css" rel="stylesheet"></script>
+
+{% endblock head %}
+
+
+{% block content %}
+<form method="POST">
+    <div class = "contentFlights">
+        <div class="topContents">
+            <div class = "fDate">
+                <label for="flight_date">Date</label><br>
+                <input type = "text" name="flight_date" class="flight_date" autocomplete="off"><br>
+            </div>
+            <div class = "fTime">
+                <label for="flight_time">Time</label><br>
+                <input type = "text" name="flight_time"class="flight_time" autocomplete="off"><br>
+            </div>
+
+
+            <div class = "fDestination">
+                <label for="flight_destination">Flight Destination</label><br>
+                <input type = "text" name="flight_destination"class="flight_destination" autocomplete="off"><br>
+            </div>
+        </div>
+        <div class="bottomContents">
+            <div class="dPrice">
+            <br><label for="deluxe_price">Deluxe Price</label><br>
+            <input type = "number" pattern="[0-9]" name="deluxe_price"class="deluxe_price" min="0"><br>
+            </div>
+
+            <div class="fcPrice">
+            <br><label for="first_class_price">First Class Price</label><br>
+            <input type = "number" pattern="[0-9]" name="first_class_price"class="first_class_price" min="0"><br>
+            </div>
+
+            <div class= "ecPrice">
+            <br><label for="economy_class_price">Economy Class Price</label><br>
+            <input type = "number" pattern="[0-9]" name="economy_class_price" class="economy_class_price" min="0" ><br>
+            </div>
+            <br><br>
+            <button type="submit" value="Add Flight" class="submitButton">Add Flight</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function removeDivFlash(){
+        var div = document.getElementById('div_flash');
+        var btn = document.getElementById('btn_flash');
+
+        div.remove();
+        btn.remove();
+    }
+</script>
+{% endblock content%}

@@ -1,0 +1,137 @@
+.bar_add{
+	color: black;
+}
+
+#div_flash{
+    position: absolute;
+    left: 0px;
+    top: 60px;
+    width: 1280px;
+    height: 50px;
+    line-height: 35px;
+  }
+  
+#mess_flash{
+    position: relative;
+    top: -13px;
+    left: -40px;
+    margin-left: 30px;
+    font-weight: bolder;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+.btn_flash{
+    z-index: 5;
+    position: absolute;
+    left: 1235px;
+    top: 60px; 
+    font-size: 15px;
+    height: 50px;
+    width: 45px;
+    background-color: transparent;
+    font-weight: bolder;
+    color: black;
+    font-size: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.flashes{
+    position:absolute
+}
+.contentFlights{
+    margin-top: 170px;
+    margin-left: 280px;
+    display: inline-block;
+    direction: left;
+    color: fff;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    
+}
+
+.fDate,.flight_date{
+    float: left;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.fTime,.flight_time{
+    float: left;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.fDestination,.flight_destination{
+    float:left;
+    width: 200px;
+    margin-right: 50px;
+}
+
+
+.bottomContents{
+    position: absolute;
+    top: 290px;
+    left: 280px;
+}
+
+.dPrice,.deluxe_price{
+    float:left;
+    width: 200px;
+    margin-right: 50px;
+
+}
+
+
+.fcPrice,.first_class_price{
+    float:left;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.ecPrice,.economy_class_price{
+    float:left;
+    width: 200px;
+    margin-right: 50px;
+
+}
+
+.submitButton{
+    position: absolute;
+	top: 150px;
+	left: 550px;
+    width: 173px;
+    height: 52px;  
+    font-size: 15px;
+    height: 30px;
+    width: 150px;
+    border-radius: 20px;
+    font-weight: bolder;
+    background-color: #004aad;
+    color: white;
+}
+
+#div_flash{
+    position: absolute;
+    left: 0px;
+    top: 60px;
+    width: 1280px;
+    height: 50px;
+    line-height: 35px;
+  }
+  
+  #mess_flash{
+    position: relative;
+    top: -13px;
+    left: -40px;
+    margin-left: 30px;
+    font-weight: bolder;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+  }

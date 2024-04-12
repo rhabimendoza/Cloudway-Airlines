@@ -1,0 +1,149 @@
+{% extends "admin_layout.html" %}
+
+{% block head %}
+  <link href = "../static/admin_edit_style.css" rel="stylesheet"></script>
+{% endblock head %}
+
+{% block content %}
+
+<div class=" div_data">
+    <input type = "text" class = "tbl_inp" onkeyup="searchTable(this.value, 'tbl_data')">
+  <table class="table" id="tbl_data" >
+     <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Destination</th>
+        <th>Seats</th>
+        <th>Status</th>
+      </thead>
+      <tbody>
+      </tr>
+      {% for t in flight_data %}
+      <tr>
+          <td>{{t[0]}}</td>
+          <td>{{t[1]}}</td>
+          <td>{{t[2]}}</td>
+          <td>{{t[3]}}</td>
+          <td>{{t[4]}}/122</td>
+          <td>{{t[5]}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class = "modifySettings">
+  <form method="POST">
+  <label for="id_form" class = "id_label">Selected Flight</label><br>
+  <input type = "text" id="id_form" name="id_form" class = "id_form" readonly placeholder="Flight ID"> 
+  <br><select id="statusSelect" name="statusSelect" class="statusSelect"></select>
+  <br>
+    <button class="btnmod" id="getModify" type="submit" name="btn_acc" value="Modify">Change</button>
+</div>
+</form>
+
+<script>
+  var table = document.getElementsByTagName("table")[0];
+  var tbody = table.getElementsByTagName("tbody")[0];
+  var select = document.getElementById("statusSelect");
+  var ModifyButton = document.getElementById("getModify");
+  var statusSelect = document.getElementById("statusSelect");
+
+  ModifyButton.disabled = true;
+  statusSelect.disabled = true;
+
+
+  tbody.onclick = function (e) {  
+    statusSelect.disabled = false;
+    ModifyButton.disabled = false;
+    e = e || window.event;
+    var data = [];
+    var target = e.srcElement || e.target;
+    while (target && target.nodeName !== "TR") {
+        target = target.parentNode;
+    }
+    if (target) {
+        var cells = target.getElementsByTagName("td");
+        for (var i = 0; i < cells.length; i++) {
+            data.push(cells[i].innerHTML);
+        }
+    }
+    document.getElementById("id_form").value = data[0];
+    select.innerHTML = '';
+    createCheck(data);
+  };
+  
+
+  const D = document,
+              tables = D.querySelectorAll('.table'),
+        toggleHighlight = (e) => {
+          D.querySelectorAll('.clickedrow').forEach(
+              (el) => el.classList.remove('clickedrow')
+          );
+          e.target.closest('tr').classList.add('clickedrow');
+        };
+        
+  tables.forEach(
+      (table)=>{
+          table.addEventListener('click', toggleHighlight)
+      });
+
+  function searchTable(input, table){
+      var table = document.getElementById(table);
+      var filter = input.toUpperCase();
+      var row;
+
+      for(ctr = 0, row; row = table.rows[ctr]; ctr++){
+          
+          if(ctr != 0){
+              text = row.innerHTML;
+
+              if(text.toUpperCase().indexOf(filter) > -1){
+                  row.style.display = "";
+              }
+              else{
+                  row.style.display = "none";
+              }
+          }
+      }
+  }
+
+  function createCheck(data){
+    if(data[5] == "ongoing"){
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "ongoing"
+        select.appendChild(optionCreate)
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "stopped"
+        select.appendChild(optionCreate)
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "full"
+        select.appendChild(optionCreate)
+    } else if (data[5] == "full"){
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "full"
+        select.appendChild(optionCreate)
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "ongoing"
+        select.appendChild(optionCreate)
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "stopped"
+        select.appendChild(optionCreate)
+    }
+      else{
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "stopped"
+        select.appendChild(optionCreate)
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "ongoing"
+        select.appendChild(optionCreate)
+        var optionCreate = document.createElement("option");
+        optionCreate.text = "full"
+        select.appendChild(optionCreate)
+      }   
+   }
+   
+</script>
+
+{% endblock content %}

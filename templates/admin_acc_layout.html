@@ -1,0 +1,44 @@
+{% extends "admin_layout.html" %}
+
+{% block head %}
+    <link href="../static/account_style.css" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}
+    Account
+{% endblock title %}
+
+{% block content %}
+
+    <img class="ico_user" src="../static/user.png">
+    <p class="par_unam">{{uname}}</p>
+
+    <form method="POST">
+        <p class="par_fna">First Name</p>
+        <input class="box_fna" type="text" name="txt_fnam"  value="{{fname}}" autocomplete="off">
+        <p class="par_lna">Last Name</p>
+        <input class="box_lna" type="text" name="txt_lnam" value="{{lname}}" autocomplete="off">
+        <p class="par_emai">Email</p>
+        <input class="box_emai" type="text" name="txt_emai"  value="{{email}}" autocomplete="off">
+        <button class="btn_upd" type="submit" name="btn_acc" value="update">Update</button>
+        <p class="par_cur">Current Password</p>
+        <input class="box_cur" type="text" name="cur_pass" autocomplete="off">
+        <p class="par_new">New Password</p>
+        <input class="box_new" type="text" name="new_pass" autocomplete="off">
+        <button class="btn_chan" type="submit" name="btn_acc" value="change">Change</button>
+        <button class="btn_log" type="submit" name="btn_acc" value="logout">Log Out</button>
+    </form>
+
+    <script>
+
+        function removeDivFlash(){
+            var div = document.getElementById('div_flash');
+            var btn = document.getElementById('btn_flash');
+
+            div.remove();
+            btn.remove();
+        }
+        
+    </script>
+
+{% endblock content %}

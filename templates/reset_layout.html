@@ -1,0 +1,36 @@
+{% extends "access_layout.html" %}
+
+{% block head %}
+    <link href="../static/reset_style.css" rel="stylesheet">
+{% endblock head %}
+
+{% block title %}
+    Reset
+{% endblock title %}
+
+{% block content %}
+
+    <p class="par_reset">RESET</p>
+    <div class="div_reset"></div>
+
+    <form method="POST">
+        <p class="par_title1">To reset your password, enter your username</p>
+        <input class="txt_uname" name="uname" type="text" placeholder="USERNAME" autocomplete="off">
+        <button class="btn_reset" type="submit">Reset</button>
+    </form>
+
+    <a class="link_signup" href="{{url_for('signup')}}">Don't have an account? Sign Up</a>
+    
+    <script>
+
+        function removeDivFlash(){
+            var div = document.getElementById('div_flash');
+            var btn = document.getElementById('btn_flash');
+
+            div.remove();
+            btn.remove();
+        }
+
+    </script>
+
+{% endblock content %}
